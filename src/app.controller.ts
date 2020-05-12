@@ -7,8 +7,13 @@ import {AxiosResponse} from 'axios';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Post()
-  getHello(): Observable<AxiosResponse<{}>> {
+  @Post('nest')
+  getHello() {
+    return this.appService.getHello();
+  }
+
+  @Post('axios')
+  getHelloAxiosPuro() {
     return this.appService.getHello();
   }
 
