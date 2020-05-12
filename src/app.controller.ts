@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Observable } from 'rxjs';
 import {AxiosResponse} from 'axios';
@@ -7,14 +7,9 @@ import {AxiosResponse} from 'axios';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Post('nest')
-  getHello() {
-    return this.appService.getHello();
-  }
-
-  @Post('axios')
-  getHelloAxiosPuro() {
-    return this.appService.getHello();
+  @Post('translate')
+  getTranslateToYodaPhrase(@Body() phrase: string) {
+    return this.appService.getTranslateToYodaPhrase(phrase);
   }
 
 }
