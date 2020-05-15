@@ -27,9 +27,9 @@ export class AppService {
 
       response = data;
     } catch (error) {
-      console.log('ERRO AO REALIZAR REQUISIÇÃO NA API: ' + error)
+      console.log('ERRO AO REALIZAR REQUISIÇÃO NA API: ' + error);
     }
 
-    return response
+    return response;
   }
 }

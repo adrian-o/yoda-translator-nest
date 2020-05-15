@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Render } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Observable } from 'rxjs';
 import {AxiosResponse} from 'axios';
@@ -8,8 +8,16 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post('translate')
-  getTranslateToYodaPhrase(@Body() phrase: string) {
-    return this.appService.getTranslateToYodaPhrase(phrase);
+  @Render('index')
+  async getTranslateToYodaPhrase(@Body() phrase: string) {
+    let resp = await this.appService.getTranslateToYodaPhrase(phrase); 
+    return { "resp": resp.contents.translated.phrase };
+  }
+
+  @Get()
+  @Render('index')
+  root() {
+    return { message: 'Put here your phrase' };
   }
 
 }

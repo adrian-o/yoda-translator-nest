@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>App</title>
+  </head>
+  <body>
+    <form action="/translate" method="post">
+        <input type="text" name="phrase" value="{{ message }}"/>
+        <input type="submit" value="Submit">
+    </form>
+    <p>
+        {{ resp }}
+    </p>
+  </body>
+</html>
